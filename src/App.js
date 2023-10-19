@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import CardCarousel from './Components/CardCarousel/CardCarousel';
+import Banner from './Components/Banner/Banner';
+import TrendColumnChart from './Components/TrendColumnChart/TrendColumnChart';
+import Home from './Pages/Home/Home';
+import TrendDetail from './Pages/TrendDetail/TrendDetail';
+import { BrowserRouter as Router, Switch, Route, Redirect, Routes,} from "react-router-dom";
+import NoPage from './Pages/NoPage/NoPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className='title'>Vogue Verse</h1>
+      <Router> 
+        <Routes> 
+          <Route index element={<Home/>} /> 
+          <Route path="/trend-detail" element={<TrendDetail></TrendDetail>} /> 
+          <Route path="*" element= {<NoPage></NoPage>}/> 
+        </Routes> 
+      </Router>
     </div>
   );
 }

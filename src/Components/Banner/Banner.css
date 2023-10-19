@@ -1,0 +1,11 @@
+.horizontal-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    gap: 200px;
+    border: 1px solid #ccc;
+}
+
+.component {
+    padding: 10px;
+}
