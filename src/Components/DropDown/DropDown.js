@@ -3,13 +3,12 @@ import { useState } from 'react';
 import './DropDown.css';
 
 
-export default function DropDown({selectMessage, selectOptions}) {
-    const [selectedOption, setSelectedOption] = useState(null);
+export default function DropDown({onChange, selectMessage, selectOptions,selectedOption}) {
 
     const handleSelect = (e) => {
-        setSelectedOption(e.target.value);
+        onChange(e.target.value);
     };
-    
+
     return (
         <div className="dropdown-container">
             <select className="dropdown" value={selectedOption} onChange={handleSelect}>
@@ -18,7 +17,6 @@ export default function DropDown({selectMessage, selectOptions}) {
                     <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
             </select>
-            {selectedOption && <p>You selected: {selectedOption}</p>}
         </div>
     )
 }

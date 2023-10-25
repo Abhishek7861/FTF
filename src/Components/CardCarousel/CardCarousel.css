@@ -26,7 +26,7 @@
     border: 1px solid #ccc;
     margin: 1px ;
     padding: 5px;
-    width: fit-content;
+    width: 550px;
   }
   .heading-dropdown{
     display: flex;
