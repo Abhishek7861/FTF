@@ -36,11 +36,11 @@ export default function TrendColumnChart(props) {
     }
     const params = {category: props.selectedTrendCategory, period: props.selectedPeriod, geography: props.selectedGeography, top_n: 10};
     useEffect(() => {
+        if(props.selectedTrendCategory!=null){
         get("/get_top_trends_and_distribution_by_category",params)
           .then(response => {
             const trendData = response.data.map(obj => ({
                 name: obj._id,
-                nameSliced: obj._id.slice(0, 20),
                 distribution: obj.percentageDistribution
               }));
             setTrendData(trendData);
@@ -48,16 +48,15 @@ export default function TrendColumnChart(props) {
           .catch(error => {
             console.error(error);
           });
-      }, [props.selectedTrendCategory]);
-
-
+        }
+      }, [props.selectedTrendCategory, props.selectedPeriod, props.selectedGeography]);
 
 
     return (
         <div>
             {headingDropdownBar}    
             <div className='chart-container'>
-                <ResponsiveContainer width={'89%'} height={400}>
+                <ResponsiveContainer width={'95%'} height={400}>
 
                     <BarChart
                         width={500}

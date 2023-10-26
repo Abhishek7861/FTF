@@ -1,11 +1,15 @@
 import React from "react";
 import "./Card.css";
+import { Link } from "react-router-dom";
+
 
 export default function Card(props) {
   return (
     <div className="card">
-      <img className="product--image" src="https://cars.tatamotors.com/images/harrier/harrier-banner-m.jpg" alt="product image" />
-      <h2>{props.name}</h2>
+      <img className="product--image" src={props.src} alt="product image" />
+      <Link to={"/trend-detail?" + "trend" + "=" + props.name}>
+        <h2 className="card-name">{props.name}</h2>
+      </Link>
     </div>
   );
 }

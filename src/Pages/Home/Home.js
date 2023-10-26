@@ -2,26 +2,22 @@ import React from 'react'
 import Banner from '../../Components/Banner/Banner'
 import TrendColumnChart from '../../Components/TrendColumnChart/TrendColumnChart'
 import CardCarousel from '../../Components/CardCarousel/CardCarousel'
-import { Link } from "react-router-dom";
 
-export default function Home() {
-  const [selectedPeriod, setSelectedPeriod] = React.useState(null);
-  const [selectedTrendCategory, setSelectedTrendCategory] = React.useState(null);
-  const [selectedGeography, setSelectedGeography] = React.useState(null);
+export default function Home(props) {
 
   const title = "Trend Detail";
-  const heading = " Selected Category : "+selectedTrendCategory;
+  const heading = " Category Selected: "+props.selectedTrendCategory;
   return (
     <div>
-      <Link to="/trend-detail">{title}</Link>
 
-      <Banner selectedPeriod={selectedPeriod} selectedGeography={selectedGeography} selectedTrendCategory={selectedTrendCategory}
-        setSelectedPeriod={setSelectedPeriod} setSelectedGeography={setSelectedGeography} setSelectedTrendCategory={setSelectedTrendCategory}></Banner>
+      <Banner selectedPeriod={props.selectedPeriod} selectedGeography={props.selectedGeography} selectedTrendCategory={props.selectedTrendCategory}
+        setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}></Banner>
 
-      <TrendColumnChart heading={heading} selectedPeriod={selectedPeriod} selectedTrendCategory={selectedTrendCategory}
-        selectedGeography={selectedGeography}></TrendColumnChart>
+      <TrendColumnChart heading={heading} selectedPeriod={props.selectedPeriod} selectedTrendCategory={props.selectedTrendCategory}
+        selectedGeography={props.selectedGeography}></TrendColumnChart>
 
-      <CardCarousel heading="Trend radar - Top trends" subheading="Category Selected: XX" viewall="true"></CardCarousel>
+      <CardCarousel heading="Trend radar - Top trends" subheading={props.selectedTrendCategory} selectedPeriod={props.selectedPeriod} 
+      selectedTrendCategory={props.selectedTrendCategory} selectedGeography={props.selectedGeography}></CardCarousel>
     </div>
   )
 }

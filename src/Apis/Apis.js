@@ -4,7 +4,7 @@ import instance from './axiosConfig';
 export default function get(url, params) {
     return instance.get(url, {params})
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         return response;
       })
       .catch(error => {
