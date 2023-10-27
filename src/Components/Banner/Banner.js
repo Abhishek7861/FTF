@@ -14,6 +14,7 @@ export default function Banner(props) {
   };
   const trendCategorySelected = (value) => {
     props.setSelectedTrendCategory(value)
+    props.setCategotyUpdatedFlag(true);
   };
   const geographySelected = (value) => {
     props.setSelectedGeography(value)
@@ -24,10 +25,12 @@ export default function Banner(props) {
   useEffect(() => {
     get("/get_unique_categories_with_trends")
       .then(response => {
-        const categoryList = response.data.map(obj => ({
-          value: obj._id,
-          label: obj._id
-        }));
+        const categoryList = response.data
+          .filter(obj => obj._id != "All Trends")
+          .map(obj => ({
+            value: obj._id,
+            label: obj._id
+          }));
         const periodList = [{ value: "1", label: "1 Month" }, { value: "2", label: "2 Month" }, { value: "3", label: "3 Month" }];
         const geographyList = [{ value: "indian", label: "Indian" }, { value: "western", label: "Western" }];
 
@@ -58,11 +61,11 @@ export default function Banner(props) {
         <DropDown onChange={periodSelected} selectMessage="Select Period" selectOptions={period_list} selectedOption={props.selectedPeriod} />
       </div>
       <div className='component'>
-      <h5>Select Trend Category</h5>
+        <h5>Select Trend Category</h5>
         <DropDown onChange={trendCategorySelected} selectMessage="Select Trend Category" selectOptions={trend_category_list} selectedOption={props.selectedTrendCategory} />
       </div>
       <div className='component'>
-      <h5>Select Geography</h5>
+        <h5>Select Geography</h5>
         <DropDown onChange={geographySelected} selectMessage="Select Geography" selectOptions={geography_list} selectedOption={props.selectedGeography} />
       </div>
     </div>
