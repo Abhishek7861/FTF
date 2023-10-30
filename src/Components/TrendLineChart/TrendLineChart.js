@@ -19,6 +19,8 @@ export default function TrendLineChart(props) {
       .then(([response1, response2]) => {
         let trendData = response1.data;
         let compTrendData = {time_series_data:{}};
+        let trendCount = 0;
+        let trendCompCount = 0;
         if (props.selectedTrend != "compare trend") { compTrendData = response2.data; }
 
         const allDates = new Set([]);
@@ -33,14 +35,16 @@ export default function TrendLineChart(props) {
         const convertedData = [];
         for (const i in datesArray) {
           let date = datesArray[i];
+          trendCount += (trendData.time_series_data[date] || 0);
+          trendCompCount += (compTrendData.time_series_data[date] || 0);
           let obj = {
             date: date,
-            trend: trendData.time_series_data[date] || 0,
-            compTrend: compTrendData.time_series_data[date] || 0
+            trend: trendCount,
+            compTrend: trendCompCount
           }
           convertedData.push(obj)
         }
-        setTrendLineData(convertedData.reverse());
+        setTrendLineData(convertedData);
       })
       .catch((error) => {
         console.error('Error:', error);

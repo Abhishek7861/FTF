@@ -33,6 +33,7 @@ export default function TrendCompare(props) {
         }
         if (props.categotyUpdatedFlag) {
           props.setTrend(trendList[0].value);
+          setselectedTrend("compare trend");
         }
         // Figure out how to update trends when category is changed.
         setTrendsList(trendList)
