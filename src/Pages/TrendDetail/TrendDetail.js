@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import TrendCompare from '../../Components/TrendCompare/TrendCompare'
 import TrendColumnChart from '../../Components/TrendColumnChart/TrendColumnChart'
 import SocialImageCardCarousel from '../../Components/SocialImageCardCarousel/SocialImageCardCarousel';
+import SimilarProductCarousel from '../../Components/SimilarProductsCarousel/SimilarProductCarousel';
 
 export default function TrendDetail(props) {
   const location = useLocation();
@@ -22,9 +23,9 @@ export default function TrendDetail(props) {
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
         setCategotyUpdatedFlag = {setCategotyUpdatedFlag}/>
       <TrendCompare trend = {trend} setTrend = {setTrend} selectedTrendCategory = {props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
-      {/* <TrendColumnChart heading="Price Comparision for Trend Name" StoreDropDown="true"></TrendColumnChart> */}
+      <TrendColumnChart heading="Price Comparision for Trend Name" StoreDropDown="true"></TrendColumnChart>
       <SocialImageCardCarousel trend={trend} subheading="Showing 10 Images"/>
-      <CardCarousel heading="Similar Products in <AJIO> for <TrendName1>" subheading="Showing <XX> Products" StoreDropDown="true"></CardCarousel>
+      <SimilarProductCarousel trend={trend}/>
     </div>
   )
 }

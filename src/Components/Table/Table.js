@@ -56,11 +56,11 @@ export default function Table(props) {
         <div className='tableApp'>
             <table>
                 <tr>
-                    <th>Contribution %</th>
+                    <th>Category Contribution %</th>
                     <th>Category</th>
                     <th>Brand</th>
-                    <th>{(props.trend) || "TREND A"}</th>
-                    <th>{"Compare Trend"}</th>
+                    <th>{(props.trend) + " %" || "TREND A"}</th>
+                    <th>{"Compare Trend %"}</th>
                     {/* <th>{(props.selectedTrend) || "TREND B"}</th> */}
                 </tr>
                 <tr>
