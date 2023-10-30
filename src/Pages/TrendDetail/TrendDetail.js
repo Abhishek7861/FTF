@@ -4,7 +4,7 @@ import Banner from '../../Components/Banner/Banner'
 import CardCarousel from '../../Components/CardCarousel/CardCarousel'
 import { Link } from 'react-router-dom'
 import TrendCompare from '../../Components/TrendCompare/TrendCompare'
-import TrendColumnChart from '../../Components/TrendColumnChart/TrendColumnChart'
+import PriceComparisionChart from '../../Components/PriceComparisionChart/PriceComparisionChart';
 import SocialImageCardCarousel from '../../Components/SocialImageCardCarousel/SocialImageCardCarousel';
 import SimilarProductCarousel from '../../Components/SimilarProductsCarousel/SimilarProductCarousel';
 
@@ -23,7 +23,7 @@ export default function TrendDetail(props) {
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
         setCategotyUpdatedFlag = {setCategotyUpdatedFlag}/>
       <TrendCompare trend = {trend} setTrend = {setTrend} selectedTrendCategory = {props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
-      <TrendColumnChart heading="Price Comparision for Trend Name" StoreDropDown="true"></TrendColumnChart>
+      <PriceComparisionChart heading="Price Comparision for Trend Name" trend = {trend}></PriceComparisionChart>
       <SocialImageCardCarousel trend={trend} subheading="Showing 10 Images"/>
       <SimilarProductCarousel trend={trend}/>
     </div>

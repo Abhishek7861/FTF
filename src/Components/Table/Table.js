@@ -18,23 +18,23 @@ export default function Table(props) {
             Promise.all(apiCalls)
                 .then(([response1, response2]) => {
                     const categoryContributionAjio = response1.data.category_level_contributions
-                    .filter(obj => obj.ecommerce == "Ajio")[0].percentage_contribution;
+                    .filter(obj => obj.ecommerce == "Ajio")[0].percentage_contribution.toFixed(2);;
                     const categoryContributionMyntra = response1.data.category_level_contributions
-                    .filter(obj => obj.ecommerce == "Myntra")[0].percentage_contribution;
+                    .filter(obj => obj.ecommerce == "Myntra")[0].percentage_contribution.toFixed(2);;
 
                     const trendAContributionAjio = response1.data.trend_level_contributions
-                    .filter(obj => obj.ecommerce == "Ajio")[0].percentage_contribution;
+                    .filter(obj => obj.ecommerce == "Ajio")[0].percentage_contribution.toFixed(2);;
 
                     const trendAContributionMyntra = response1.data.trend_level_contributions
-                    .filter(obj => obj.ecommerce == "Myntra")[0].percentage_contribution;
+                    .filter(obj => obj.ecommerce == "Myntra")[0].percentage_contribution.toFixed(2);;
                     var trendBContributionAjio = null;
                     var trendBContributionMyntra = null;
                     if (props.selectedTrend != "compare trend") { 
                         trendBContributionAjio = response2.data.trend_level_contributions
-                        .filter(obj => obj.ecommerce == "Ajio")[0].percentage_contribution;
+                        .filter(obj => obj.ecommerce == "Ajio")[0].percentage_contribution.toFixed(2);;
     
                         trendBContributionMyntra = response2.data.trend_level_contributions
-                        .filter(obj => obj.ecommerce == "Myntra")[0].percentage_contribution;
+                        .filter(obj => obj.ecommerce == "Myntra")[0].percentage_contribution.toFixed(2);;
                      }
 
                     const trendA = { head: (categoryContributionAjio), category: response1.data.category, brand: "Ajio", trendA: (trendAContributionAjio), trendB: trendBContributionAjio };
