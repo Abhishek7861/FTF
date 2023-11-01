@@ -11,7 +11,7 @@ export default function Table(props) {
             const url = "/percentage_contribution";
             const paramsA = { category: props.selectedTrendCategory, trendName: props.trend };
             //TODO: remove maxiboycon hardcoding
-            const paramsB = { category: props.selectedTrendCategory, trendName: "maxi bodycon" };
+            const paramsB = { category: props.selectedTrendCategory, trendName: props.selectedTrend };
             const apiCalls = [];
             apiCalls.push(get(url, paramsA));
             if (props.selectedTrend != "compare trend") { apiCalls.push(get(url, paramsB)); }
@@ -60,7 +60,7 @@ export default function Table(props) {
                     <th>Category</th>
                     <th>Brand</th>
                     <th>{(props.trend) + " %" || "TREND A"}</th>
-                    <th>{"Compare Trend %"}</th>
+                    <th>{props.selectedTrend+" %"}</th>
                     {/* <th>{(props.selectedTrend) || "TREND B"}</th> */}
                 </tr>
                 <tr>

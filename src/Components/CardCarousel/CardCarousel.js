@@ -28,7 +28,7 @@ export default function CardCarousel(props) {
   };
   const [carouselData, setCarouselData] = React.useState([]);
 
-  const params = { category: props.selectedTrendCategory, period: props.selectedPeriod, geography: props.selectedGeography, top_n: 10 };
+  const params = { category: props.selectedTrendCategory, period: props.selectedPeriod, geography: props.selectedGeography, top_n: 500 };
   useEffect(() => {
     if (props.selectedTrendCategory != null) {
       get("/get_top_trends_and_distribution_by_category", params)
@@ -38,7 +38,6 @@ export default function CardCarousel(props) {
             img:  obj.firstImage.imageUrl,
             imageCount: obj.imageCount
           }));
-          // console.log(carouselData);
           setCarouselData(carouselData);
         })
         .catch(error => {
@@ -52,7 +51,7 @@ export default function CardCarousel(props) {
     <div className='carousel-container'>
       <h2 className='carousel-heading'>{props.heading}</h2>
       <h3>{"Category Selected : "+props.subheading} </h3>
-      <h4>{"Total Trends : "+props.trendCount} </h4>
+      {/* <h4>{"Total Trends : "+props.trendCount} </h4> */}
       <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
         {carouselData.map(data => (
           <div>
