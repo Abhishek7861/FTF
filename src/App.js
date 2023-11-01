@@ -8,9 +8,9 @@ import NoPage from './Pages/NoPage/NoPage';
 
 
 function App() {
-  const [selectedPeriod, setSelectedPeriod] = useState(null);
-  const [selectedTrendCategory, setSelectedTrendCategory] = useState(null);
-  const [selectedGeography, setSelectedGeography] = useState(null);
+  const [selectedPeriod, setSelectedPeriod] = useState(90);
+  const [selectedTrendCategory, setSelectedTrendCategory] = useState("Dress Trends");
+  const [selectedGeography, setSelectedGeography] = useState("western");
 
   return (
     <div>

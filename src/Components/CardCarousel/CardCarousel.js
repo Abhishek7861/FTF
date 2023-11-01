@@ -35,7 +35,8 @@ export default function CardCarousel(props) {
         .then(response => {
           const carouselData = response.data.map(obj => ({
             name: obj._id,
-            img:  obj.firstImage.imageUrl
+            img:  obj.firstImage.imageUrl,
+            imageCount: obj.imageCount
           }));
           // console.log(carouselData);
           setCarouselData(carouselData);
@@ -51,10 +52,11 @@ export default function CardCarousel(props) {
     <div className='carousel-container'>
       <h2 className='carousel-heading'>{props.heading}</h2>
       <h3>{"Category Selected : "+props.subheading} </h3>
+      <h4>{"Total Trends : "+props.trendCount} </h4>
       <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
         {carouselData.map(data => (
           <div>
-            <Card name={data.name} src={data.img} />
+            <Card name={data.name} src={data.img} imageCount = {data.imageCount} />
           </div>
         ))}
       </Carousel>

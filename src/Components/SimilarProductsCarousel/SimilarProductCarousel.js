@@ -49,7 +49,7 @@ export default function SimilarProductCarousel(props) {
               description: obj.description,
               product_url: obj.product_url      
             }));
-            console.log(carouselData);
+            // console.log(carouselData);
             setCarouselData(carouselData);
           })
           .catch(error => {

@@ -11,6 +11,7 @@ import SimilarProductCarousel from '../../Components/SimilarProductsCarousel/Sim
 export default function TrendDetail(props) {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
+  const [trendCount, setTrendCount] = useState(0);
   const [trend, setTrend] = useState(queryParams.get("trend"));
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
   // console.log(trend);
@@ -21,7 +22,7 @@ export default function TrendDetail(props) {
       <Link to="/">Home</Link>
       <Banner selectedPeriod={props.selectedPeriod} selectedGeography={props.selectedGeography} selectedTrendCategory={props.selectedTrendCategory}
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
-        setCategotyUpdatedFlag = {setCategotyUpdatedFlag}/>
+        setCategotyUpdatedFlag = {setCategotyUpdatedFlag} setTrendCount={setTrendCount}/>
       <TrendCompare trend = {trend} setTrend = {setTrend} selectedTrendCategory = {props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
       <PriceComparisionChart heading="Price Comparision for Trend Name" trend = {trend}></PriceComparisionChart>
       <SocialImageCardCarousel trend={trend} subheading="Showing 10 Images"/>

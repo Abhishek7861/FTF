@@ -5,6 +5,7 @@ import CardCarousel from '../../Components/CardCarousel/CardCarousel'
 
 export default function Home(props) {
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
+  const [trendCount, setTrendCount] = useState(0);
   const title = "Trend Detail";
   const heading = " Category Selected: "+props.selectedTrendCategory;
   return (
@@ -12,12 +13,12 @@ export default function Home(props) {
 
       <Banner selectedPeriod={props.selectedPeriod} selectedGeography={props.selectedGeography} selectedTrendCategory={props.selectedTrendCategory}
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
-        setCategotyUpdatedFlag = {setCategotyUpdatedFlag}></Banner>
+        setCategotyUpdatedFlag = {setCategotyUpdatedFlag} setTrendCount={setTrendCount}></Banner>
 
       <TrendColumnChart heading={heading} selectedPeriod={props.selectedPeriod} selectedTrendCategory={props.selectedTrendCategory}
         selectedGeography={props.selectedGeography}></TrendColumnChart>
 
-      <CardCarousel heading="Trend radar - Top trends" subheading={props.selectedTrendCategory} selectedPeriod={props.selectedPeriod} 
+      <CardCarousel heading="Trend radar - Top trends" subheading={props.selectedTrendCategory} trendCount={trendCount} selectedPeriod={props.selectedPeriod} 
       selectedTrendCategory={props.selectedTrendCategory} selectedGeography={props.selectedGeography}></CardCarousel>
     </div>
   )

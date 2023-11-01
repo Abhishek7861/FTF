@@ -10,6 +10,7 @@ export default function Card(props) {
       <Link to={"/trend-detail?" + "trend" + "=" + props.name}>
         <h2 className="card-name">{props.name}</h2>
       </Link>
+      <h4 className="card-name">{"image count : "+props.imageCount}</h4>
     </div>
   );
 }

@@ -31,28 +31,38 @@ export default function Banner(props) {
             value: obj._id,
             label: obj._id
           }));
-        const periodList = [{ value: "1", label: "1 Month" }, { value: "2", label: "2 Month" }, { value: "3", label: "3 Month" }];
+        const periodList = [{ value: "30", label: "1 Month" }, { value: "60", label: "2 Month" }, { value: "90", label: "3 Month" },{ value: "180", label: "6 Month" },{ value: "360", label: "12 Month" }];
         const geographyList = [{ value: "indian", label: "Indian" }, { value: "western", label: "Western" }];
+        props.setTrendCount(10);
 
         setTrendCategoryList(categoryList);
-        if (props.selectedTrendCategory == null) {
-          props.setSelectedTrendCategory(categoryList[0].value);
-        }
+        // if (props.selectedTrendCategory == null) {
+        //   props.setSelectedTrendCategory("Dress Trends");
+        // }
 
         setPeriodList(periodList);
-        if (props.selectedPeriod == null) {
-          props.setSelectedPeriod(periodList[0].value);
-        }
+        // if (props.selectedPeriod == null) {
+        //   props.setSelectedPeriod(90);
+        // }
 
         setGeographyList(geographyList);
-        if (props.selectedGeography == null) {
-          props.setSelectedGeography(geographyList[0].value);
-        }
+        // if (props.selectedGeography == null) {
+        //   props.setSelectedGeography("western");
+        // }
+
+        const trendList = response.data
+          .filter(obj => obj._id == props.selectedTrendCategory)
+          .map(obj => ({
+            trends: obj.trends,
+          }));
+        console.log(trendList[0]);
+        props.setTrendCount(trendList[0].trends.length);
+
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [props.selectedTrendCategory,props.selectedPeriod,props.selectedGeography]);
 
   return (
     <div className='horizontal-container'>
