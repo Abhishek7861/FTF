@@ -14,7 +14,6 @@ function App() {
 
   return (
     <div>
-      <h1 className='title'>Vogue Verse</h1>
       <Router>
         <Routes>
           

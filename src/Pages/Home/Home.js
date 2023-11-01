@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Banner from '../../Components/Banner/Banner'
 import TrendColumnChart from '../../Components/TrendColumnChart/TrendColumnChart'
 import CardCarousel from '../../Components/CardCarousel/CardCarousel'
+import { Link } from 'react-router-dom'
 
 export default function Home(props) {
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
@@ -10,7 +11,7 @@ export default function Home(props) {
   const heading = " Category Selected: "+props.selectedTrendCategory;
   return (
     <div>
-
+      <Link to="/"><h1 className='title'>Vogue Verse</h1></Link>
       <Banner selectedPeriod={props.selectedPeriod} selectedGeography={props.selectedGeography} selectedTrendCategory={props.selectedTrendCategory}
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
         setCategotyUpdatedFlag = {setCategotyUpdatedFlag} setTrendCount={setTrendCount}></Banner>

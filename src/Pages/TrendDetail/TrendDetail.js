@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import Banner from '../../Components/Banner/Banner'
 import CardCarousel from '../../Components/CardCarousel/CardCarousel'
@@ -16,17 +16,18 @@ export default function TrendDetail(props) {
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
   // console.log(trend);
   // console.log(props.selectedTrendCategory);
-  if(trend==null) return <div>No trend Selected</div>
+  if (trend == null) return <div>No trend Selected</div>
   return (
     <div>
-      <Link to="/">Home</Link>
+
+      <Link to="/"><h1 className='title'>Vogue Verse</h1></Link>
       <Banner selectedPeriod={props.selectedPeriod} selectedGeography={props.selectedGeography} selectedTrendCategory={props.selectedTrendCategory}
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
-        setCategotyUpdatedFlag = {setCategotyUpdatedFlag} setTrendCount={setTrendCount}/>
-      <TrendCompare trend = {trend} setTrend = {setTrend} selectedTrendCategory = {props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
-      <PriceComparisionChart heading="Price Comparision for Trend Name" trend = {trend}></PriceComparisionChart>
-      <SocialImageCardCarousel trend={trend}/>
-      <SimilarProductCarousel trend={trend}/>
+        setCategotyUpdatedFlag={setCategotyUpdatedFlag} setTrendCount={setTrendCount} />
+      <TrendCompare trend={trend} setTrend={setTrend} selectedTrendCategory={props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
+      <PriceComparisionChart heading="Price Comparision for Trend Name" trend={trend}></PriceComparisionChart>
+      <SocialImageCardCarousel trend={trend} />
+      <SimilarProductCarousel trend={trend} />
     </div>
   )
 }
