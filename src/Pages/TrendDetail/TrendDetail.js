@@ -25,7 +25,7 @@ export default function TrendDetail(props) {
         setCategotyUpdatedFlag = {setCategotyUpdatedFlag} setTrendCount={setTrendCount}/>
       <TrendCompare trend = {trend} setTrend = {setTrend} selectedTrendCategory = {props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
       <PriceComparisionChart heading="Price Comparision for Trend Name" trend = {trend}></PriceComparisionChart>
-      <SocialImageCardCarousel trend={trend} subheading="Showing 10 Images"/>
+      <SocialImageCardCarousel trend={trend}/>
       <SimilarProductCarousel trend={trend}/>
     </div>
   )

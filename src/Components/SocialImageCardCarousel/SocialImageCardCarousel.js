@@ -27,6 +27,8 @@ export default function SocialImageCardCarousel(props) {
   };
 
   const [carouselData, setCarouselData] = React.useState([]);
+  const [carouselDataLength, setCarouselDataLength] = React.useState(0);
+  const ImageCount = 50;
   
   const params = { trend_name: props.trend, gender: "f" };
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function SocialImageCardCarousel(props) {
         .then(response => {
           const data = response.data.data.images;
           const carouselData = [];
-          for(let i=0;i<Math.min(data.length,10);i++){
+          for(let i=0;i<Math.min(data.length,ImageCount);i++){
             let obj = data[i];
             carouselData.push({
               name: obj.username,
@@ -44,6 +46,7 @@ export default function SocialImageCardCarousel(props) {
               postUrl: obj.postUrl
             });
           }
+          setCarouselDataLength(data.length);
           setCarouselData(carouselData);
         })
         .catch(error => {
@@ -55,7 +58,7 @@ export default function SocialImageCardCarousel(props) {
   return (
     <div className='carousel-container'>
       <h2 className='carousel-heading'>{"Trend Selected " +props.trend}</h2>
-      <h3>{props.subheading} </h3>
+      <h3>{"Showing "+ImageCount + " Images out of "+ carouselDataLength} </h3>
       <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
         {carouselData.map(data => (
           <div>

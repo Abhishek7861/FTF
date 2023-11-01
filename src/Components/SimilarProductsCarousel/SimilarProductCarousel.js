@@ -28,7 +28,7 @@ export default function SimilarProductCarousel(props) {
     };
     const [carouselData, setCarouselData] = React.useState([]);
     const [store, setStore] = React.useState("Ajio");
-    const countToShow = 10;
+    const countToShow = 100;
 
     const period_list = [{ value: "Ajio", label: "Ajio" }, { value: "Myntra", label: "Myntra" }];
 
@@ -69,7 +69,7 @@ export default function SimilarProductCarousel(props) {
                         <DropDown onChange={storeSelected} selectMessage="Select Period" selectOptions={period_list} selectedOption={store} />
                     </div>
                 </div>
-                <h3>{"Showing " + countToShow + " Similar Products"}</h3>
+                <h3>{"Showing Top " + countToShow + " Products"}</h3>
                 <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
                     {carouselData.map(data => (
                         <div>
