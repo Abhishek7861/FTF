@@ -3,7 +3,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './CardCarousel.css'
 import Card from '../Card/Card';
-import DropDown from '../DropDown/DropDown';
 import get from '../../Apis/Apis';
 
 export default function CardCarousel(props) {
@@ -51,7 +50,6 @@ export default function CardCarousel(props) {
     <div className='carousel-container'>
       <h2 className='carousel-heading'>{props.heading}</h2>
       <h3>{"Category Selected : "+props.subheading} </h3>
-      {/* <h4>{"Total Trends : "+props.trendCount} </h4> */}
       <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
         {carouselData.map(data => (
           <div>

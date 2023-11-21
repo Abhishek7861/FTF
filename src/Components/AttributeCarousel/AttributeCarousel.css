@@ -1,0 +1,12 @@
+.carousel-container{
+    border: 1px solid #ccc;
+    margin: 1px ;
+    padding: 5px;
+  }
+
+  .carousel-heading{
+    border: 1px solid #ccc;
+    margin: 1px ;
+    padding: 5px;
+    width: 550px;
+  }

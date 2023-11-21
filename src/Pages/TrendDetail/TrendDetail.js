@@ -7,6 +7,7 @@ import TrendCompare from '../../Components/TrendCompare/TrendCompare'
 import PriceComparisionChart from '../../Components/PriceComparisionChart/PriceComparisionChart';
 import SocialImageCardCarousel from '../../Components/SocialImageCardCarousel/SocialImageCardCarousel';
 import SimilarProductCarousel from '../../Components/SimilarProductsCarousel/SimilarProductCarousel';
+import AttributeCarousel from '../../Components/AttributeCarousel/AttributeCarousel'
 
 export default function TrendDetail(props) {
   const location = useLocation();
@@ -28,6 +29,7 @@ export default function TrendDetail(props) {
       <PriceComparisionChart heading="Price Comparision for Trend Name" trend={trend}></PriceComparisionChart>
       <SocialImageCardCarousel trend={trend} />
       <SimilarProductCarousel trend={trend} />
+      <AttributeCarousel></AttributeCarousel>
     </div>
   )
 }
