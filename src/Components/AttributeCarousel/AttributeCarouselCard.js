@@ -21,6 +21,10 @@ export default function AttributeCarouselCard(props) {
     const handleMouseLeave = () => {
         setShowInfo(false);
     };
+
+    const openModal = () =>{
+        props.setIsModalOpen(true);
+    }
     return (
         <div className="card">
             <div className="image-container">
@@ -29,6 +33,7 @@ export default function AttributeCarouselCard(props) {
                     alt="Description"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
+                    onClick={openModal}
                 />
                 {showInfo && (
                     <div
@@ -94,7 +99,6 @@ export default function AttributeCarouselCard(props) {
                                     <td>short-sleeve</td>
                                     <td>0.362</td>
                                 </tr>
-                                {/* Add more rows as needed */}
                             </tbody>
                         </table>
                     </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import AttributeCarouselCard from './AttributeCarouselCard';
 import Carousel from 'react-multi-carousel';
 
-export default function AttributeCarousel() {
+export default function AttributeCarousel(props) {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -32,7 +32,7 @@ export default function AttributeCarousel() {
             <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
                 {carouselData.map(data => (
                     <div>
-                        <AttributeCarouselCard name={data.name} src={data.img} imageCount={imageCount++} />
+                        <AttributeCarouselCard name={data.name} src={data.img} imageCount={imageCount++} setIsModalOpen = {props.setIsModalOpen}/>
                     </div>
                 ))
                 }

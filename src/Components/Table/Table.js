@@ -61,7 +61,6 @@ export default function Table(props) {
                     <th>Brand</th>
                     <th>{(props.trend) + " %" || "TREND A"}</th>
                     <th>{props.selectedTrend+" %"}</th>
-                    {/* <th>{(props.selectedTrend) || "TREND B"}</th> */}
                 </tr>
                 <tr>
                     <td>{trendAData.head}</td>

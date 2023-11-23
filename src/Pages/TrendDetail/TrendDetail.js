@@ -8,6 +8,7 @@ import PriceComparisionChart from '../../Components/PriceComparisionChart/PriceC
 import SocialImageCardCarousel from '../../Components/SocialImageCardCarousel/SocialImageCardCarousel';
 import SimilarProductCarousel from '../../Components/SimilarProductsCarousel/SimilarProductCarousel';
 import AttributeCarousel from '../../Components/AttributeCarousel/AttributeCarousel'
+import MainModal from '../../Components/Modal/MainModal';
 
 export default function TrendDetail(props) {
   const location = useLocation();
@@ -15,6 +16,8 @@ export default function TrendDetail(props) {
   const [trendCount, setTrendCount] = useState(0);
   const [trend, setTrend] = useState(queryParams.get("trend"));
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({name:"Abhishek",age:28,weight:70});
   // console.log(trend);
   // console.log(props.selectedTrendCategory);
   if (trend == null) return <div>No trend Selected</div>
@@ -29,7 +32,8 @@ export default function TrendDetail(props) {
       <PriceComparisionChart heading="Price Comparision for Trend Name" trend={trend}></PriceComparisionChart>
       <SocialImageCardCarousel trend={trend} />
       <SimilarProductCarousel trend={trend} />
-      <AttributeCarousel></AttributeCarousel>
+      <AttributeCarousel setIsModalOpen={setIsModalOpen}></AttributeCarousel>
+      <MainModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} modalData={modalData}></MainModal>
     </div>
   )
 }

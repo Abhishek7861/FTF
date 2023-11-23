@@ -1,0 +1,7 @@
+.modal--image{
+    width: 100%;
+    height: 20em;
+    border-radius: 10px 10px;
+    /* Added border-radius */
+    object-fit: cover;
+}
