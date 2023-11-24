@@ -32,7 +32,7 @@ export default function TrendDetail(props) {
       <PriceComparisionChart heading="Price Comparision for Trend Name" trend={trend}></PriceComparisionChart>
       <SocialImageCardCarousel trend={trend} />
       <SimilarProductCarousel trend={trend} />
-      <AttributeCarousel setIsModalOpen={setIsModalOpen}></AttributeCarousel>
+      <AttributeCarousel setIsModalOpen={setIsModalOpen} setModalData={setModalData}></AttributeCarousel>
       <MainModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} modalData={modalData}></MainModal>
     </div>
   )

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import AttributeCarouselCard from './AttributeCarouselCard';
 import Carousel from 'react-multi-carousel';
-
+import get from '../../Apis/Apis';
 export default function AttributeCarousel(props) {
     const responsive = {
         superLargeDesktop: {
@@ -22,17 +22,31 @@ export default function AttributeCarousel(props) {
             items: 1
         }
     };
-    var imageCount = 0;
-    const [carouselData, setCarouselData] = React.useState([{ name: "name 1", img: "logo192.png", imageCount: 10 }, { name: "name 2", img: "logo192.png", imageCount: 10 }, { name: "name 3", img: "logo192.png", imageCount: 10 }, { name: "name 4", img: "logo192.png", imageCount: 10 }]);
+
+    const [carouselData, setCarouselData] = React.useState([]);
+    useEffect(() => {
+        get("/get_tags_data")
+            .then(response => {
+                const carouselData = response.data.result.map(obj => ({
+                    name: obj.detected_product_id,
+                    img: obj.primary_image,
+                    attributes: obj.attributes
+                }));
+                setCarouselData(carouselData);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
     return (
         <div className='carousel-container'>
-            <h2 className='carousel-heading'>{"Heading"}</h2>
-            <h3>{"Category Selected : " + "sub heading"} </h3>
+            <h2 className='carousel-heading'>Dress Attributes</h2>
             {/* <h4>{"Total Trends : "+props.trendCount} </h4> */}
             <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
                 {carouselData.map(data => (
                     <div>
-                        <AttributeCarouselCard name={data.name} src={data.img} imageCount={imageCount++} setIsModalOpen = {props.setIsModalOpen}/>
+                        <AttributeCarouselCard name={data.name} src={data.img} attributes = {data.attributes} setIsModalOpen={props.setIsModalOpen}
+                        setModalData = {props.setModalData} />
                     </div>
                 ))
                 }
