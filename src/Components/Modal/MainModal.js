@@ -13,7 +13,7 @@ const MainModal = (props) => {
     const closeModal = () => {
         props.setIsModalOpen(false);
     };
-
+    console.log(props.modalData);
     return (
         <div>
             <Modal isOpen={props.isModalOpen} closeModal={closeModal}>

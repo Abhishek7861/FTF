@@ -17,7 +17,11 @@ export default function TrendDetail(props) {
   const [trend, setTrend] = useState(queryParams.get("trend"));
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState({name:"Abhishek",age:28,weight:70});
+  const [modalData, setModalData] = useState({
+    "name": "469460387_peach",
+    "src": "https://storage.googleapis.com/sml-products-catalog/Ajio/469460387_peach.jpg",
+    "attributes": []
+});
   // console.log(trend);
   // console.log(props.selectedTrendCategory);
   if (trend == null) return <div>No trend Selected</div>
