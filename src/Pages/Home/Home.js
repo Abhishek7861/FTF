@@ -8,7 +8,7 @@ export default function Home(props) {
   const [categotyUpdatedFlag, setCategotyUpdatedFlag] = useState(false);
   const [trendCount, setTrendCount] = useState(0);
   const title = "Trend Detail";
-  const heading = " Category Selected: "+props.selectedTrendCategory;
+  const heading = "Top 10 Style for : "+props.selectedTrendCategory;
   return (
     <div>
       <Link to="/"><h1 className='title'>Vogue Verse</h1></Link>

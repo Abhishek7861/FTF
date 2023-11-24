@@ -49,7 +49,8 @@ export default function CardCarousel(props) {
   return (
     <div className='carousel-container'>
       <h2 className='carousel-heading'>{props.heading}</h2>
-      <h3>{"Category Selected : "+props.subheading} </h3>
+      <h3>{"Below are top trending styles in : "+props.subheading} </h3>
+      <i>Click on the style below for additional info</i>
       <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
         {carouselData.map(data => (
           <div>

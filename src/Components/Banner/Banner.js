@@ -75,7 +75,7 @@ export default function Banner(props) {
         <DropDown onChange={trendCategorySelected} selectMessage="Select Trend Category" selectOptions={trend_category_list} selectedOption={props.selectedTrendCategory} />
       </div>
       <div className='component'>
-        <h5>Select Geography</h5>
+        <h5>Select Influencer Location</h5>
         <DropDown onChange={geographySelected} selectMessage="Select Geography" selectOptions={geography_list} selectedOption={props.selectedGeography} />
       </div>
     </div>

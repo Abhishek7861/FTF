@@ -63,7 +63,7 @@ export default function SimilarProductCarousel(props) {
         <div>
             <div className='carousel-container'>
                 <div className='heading-dropdown'>
-                    <h2 className='carousel-heading'>{"Selected Trend : " + props.trend}</h2>
+                    <h2 className='carousel-heading'>{ "Similar Products for "+props.trend+" on "+ store }</h2>
                     <div className='drop'>
                         <label>Select Store</label>
                         <DropDown onChange={storeSelected} selectMessage="Select Period" selectOptions={period_list} selectedOption={store} />

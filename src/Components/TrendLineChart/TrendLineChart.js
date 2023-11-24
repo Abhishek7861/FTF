@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer } from 'recharts';
 import './TrendLineChart.css'
 import get from '../../Apis/Apis';
 
@@ -18,7 +18,7 @@ export default function TrendLineChart(props) {
     Promise.all(apiCalls)
       .then(([response1, response2]) => {
         let trendData = response1.data;
-        let compTrendData = {time_series_data:{}};
+        let compTrendData = { time_series_data: {} };
         let trendCount = 0;
         let trendCompCount = 0;
         if (props.selectedTrend != "compare trend") { compTrendData = response2.data; }
@@ -72,8 +72,12 @@ export default function TrendLineChart(props) {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
+          <XAxis dataKey="date" tick={{ fontSize: 12 }} >
+            <Label value="Date" offset={-5} position="insideBottom" />
+          </XAxis>
+          <YAxis >
+          <Label angle={-90} value="Cumlative Trend Count" position={{ x: 10, y: 70 }} offset={-10} />
+          </YAxis>
           <Tooltip />
           <Line type="monotone" label="selected Trend" dataKey="trend" stroke="#8884d8" activeDot={{ r: 8 }} />
           {compare}

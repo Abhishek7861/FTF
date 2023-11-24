@@ -47,7 +47,7 @@ export default function AttributeCarouselCard(props) {
                                 <tr>
                                     <th>Attribute</th>
                                     <th>Value</th>
-                                    <th>Score</th>
+                                    <th>Prediction Probablity</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,7 +55,7 @@ export default function AttributeCarouselCard(props) {
                                     <tr>
                                         <td>{data.attribute_type}</td>
                                         <td>{data.attribute}</td>
-                                        <td>{data.score}</td>
+                                        <td>{(data.score*100).toFixed(1)}%</td>
                                     </tr>
                                 ))
                                 }

@@ -33,7 +33,7 @@ export default function TrendDetail(props) {
         setSelectedPeriod={props.setSelectedPeriod} setSelectedGeography={props.setSelectedGeography} setSelectedTrendCategory={props.setSelectedTrendCategory}
         setCategotyUpdatedFlag={setCategotyUpdatedFlag} setTrendCount={setTrendCount} />
       <TrendCompare trend={trend} setTrend={setTrend} selectedTrendCategory={props.selectedTrendCategory} categotyUpdatedFlag={categotyUpdatedFlag}></TrendCompare>
-      <PriceComparisionChart heading="Price Comparision for Trend Name" trend={trend}></PriceComparisionChart>
+      <PriceComparisionChart heading={"Price Comparision for "+trend} trend={trend}></PriceComparisionChart>
       <SocialImageCardCarousel trend={trend} />
       <SimilarProductCarousel trend={trend} />
       <AttributeCarousel setIsModalOpen={setIsModalOpen} setModalData={setModalData}></AttributeCarousel>

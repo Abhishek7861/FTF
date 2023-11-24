@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import './PriceComparisionChart.css'
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer } from 'recharts';
 import DropDown from '../DropDown/DropDown';
 import get from '../../Apis/Apis';
 
@@ -29,7 +29,7 @@ export default function PriceComparisionChart(props) {
                         priceRange.add(range);
                     }
                     const rangeArray = Array.from(priceRange);
-                    for(var i in rangeArray){
+                    for (var i in rangeArray) {
                         let range = rangeArray[i];
                         var row = {
                             range: range,
@@ -53,10 +53,10 @@ export default function PriceComparisionChart(props) {
                     <h2 className='columnchart-heading'>{props.heading}</h2>
                     <div className='drop'>
                         <label>{" Select Store A"}</label>
-                        <DropDown onChange={setStoreA} selectMessage="Select Store" selectOptions={[{ value: "Ajio", label: "Ajio" }, { value: "Myntra", label: "Myntra" } ]} selectedOption={storeA}></DropDown>
+                        <DropDown onChange={setStoreA} selectMessage="Select Store" selectOptions={[{ value: "Ajio", label: "Ajio" }, { value: "Myntra", label: "Myntra" }]} selectedOption={storeA}></DropDown>
                         <label>{"   "}</label>
                         <label>{"    Select Store B"}</label>
-                        <DropDown onChange={setStoreB} selectMessage="Select Store" selectOptions={[{ value: "Ajio", label: "Ajio" }, { value: "Myntra", label: "Myntra" } ]} selectedOption={storeB}></DropDown>
+                        <DropDown onChange={setStoreB} selectMessage="Select Store" selectOptions={[{ value: "Ajio", label: "Ajio" }, { value: "Myntra", label: "Myntra" }]} selectedOption={storeB}></DropDown>
                     </div>
                 </div>
                 <div className='chart-container'>
@@ -74,8 +74,12 @@ export default function PriceComparisionChart(props) {
                             }}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="range" minTickGap={-50} tick={{ fontSize: 11 }} />
-                            <YAxis />
+                            <XAxis dataKey="range" minTickGap={-50} tick={{ fontSize: 11 }}>
+                                <Label value="Price Range" offset={-5} position="insideBottom" />
+                            </XAxis>
+                            <YAxis>
+                                <Label angle={-90} value="Trend Count" position="insideLeft" offset={-10} />
+                            </YAxis>
                             <Tooltip />
                             <Bar dataKey="storeA" fill="blue" activeBar={<Rectangle fill="pink" stroke="blue" />} />
                             <Bar dataKey="storeB" fill="green" activeBar={<Rectangle fill="orange" stroke="red" />} />

@@ -57,7 +57,7 @@ export default function SocialImageCardCarousel(props) {
 
   return (
     <div className='carousel-container'>
-      <h2 className='carousel-heading'>{"Trend Selected " +props.trend}</h2>
+      <h2 className='carousel-heading'>{"Social Media Design Inspirations for : " +props.trend}</h2>
       <h3>{"Showing "+ImageCount + " Images out of "+ carouselDataLength} </h3>
       <Carousel responsive={responsive} infinite={true} itemClass="carousel-item-padding-40-px">
         {carouselData.map(data => (

@@ -1,5 +1,5 @@
 import React, {useEffect}from 'react'
-import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 import './TrendColumnChart.css'
 import DropDown from '../DropDown/DropDown';
 import get from '../../Apis/Apis';
@@ -41,7 +41,7 @@ export default function TrendColumnChart(props) {
           .then(response => {
             const trendData = response.data.map(obj => ({
                 name: obj._id,
-                distribution: obj.percentageDistribution
+                distribution: obj.percentageDistribution.toFixed(1)
               }));
             setTrendData(trendData);
           })
@@ -56,7 +56,7 @@ export default function TrendColumnChart(props) {
         <div>
             {headingDropdownBar}    
             <div className='chart-container'>
-                <ResponsiveContainer width={'95%'} height={400}>
+                <ResponsiveContainer width={'95%'} height={410}>
 
                     <BarChart
                         width={500}
@@ -70,8 +70,12 @@ export default function TrendColumnChart(props) {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" minTickGap={-50} tick={{ fontSize: 11 }}/>
-                        <YAxis />
+                        <XAxis dataKey="name" minTickGap={-50} tick={{ fontSize: 10 }}>
+                            <Label value="style" offset={-3} position="insideBottom" />
+                        </XAxis>
+                        <YAxis>
+                            <Label angle={-90} value="% contribution" position="inside" />
+                        </YAxis>
                         <Tooltip />
                         <Bar dataKey="distribution" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
                     </BarChart>
