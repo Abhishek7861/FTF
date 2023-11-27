@@ -33,8 +33,8 @@ export default function PriceComparisionChart(props) {
                         let range = rangeArray[i];
                         var row = {
                             range: range,
-                            storeA: response1.data.product_counts_by_price_range[range],
-                            storeB: response2.data.product_counts_by_price_range[range],
+                            [storeA]: response1.data.product_counts_by_price_range[range],
+                            [storeB]: response2.data.product_counts_by_price_range[range],
                         }
                         compData.push(row);
                     }
@@ -51,7 +51,7 @@ export default function PriceComparisionChart(props) {
             <div>
                 <div className='heading-dropdown-bar'>
                     <h2 className='columnchart-heading'>{props.heading}</h2>
-                    <div className='drop'>
+                    <div className='drop-down-price-compare'>
                         <label>{" Select Store A"}</label>
                         <DropDown onChange={setStoreA} selectMessage="Select Store" selectOptions={[{ value: "Ajio", label: "Ajio" }, { value: "Myntra", label: "Myntra" }]} selectedOption={storeA}></DropDown>
                         <label>{"   "}</label>
@@ -75,14 +75,14 @@ export default function PriceComparisionChart(props) {
                         >
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="range" minTickGap={-50} tick={{ fontSize: 11 }}>
-                                <Label value="Price Range" offset={-5} position="insideBottom" />
+                                <Label value="Price Range" offset={-2} position="insideBottom" />
                             </XAxis>
                             <YAxis>
-                                <Label angle={-90} value="Trend Count" position="insideLeft" offset={-10} />
+                                <Label angle={-90} value="Trend Count" position={{ x: 5, y: 120 }} offset={-10} />
                             </YAxis>
                             <Tooltip />
-                            <Bar dataKey="storeA" fill="blue" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-                            <Bar dataKey="storeB" fill="green" activeBar={<Rectangle fill="orange" stroke="red" />} />
+                            <Bar dataKey={storeA} fill="blue" activeBar={<Rectangle fill="pink" stroke="blue" />} />
+                            <Bar dataKey={storeB} fill="green" activeBar={<Rectangle fill="orange" stroke="red" />} />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
